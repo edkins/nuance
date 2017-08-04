@@ -1,0 +1,50 @@
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+span {
+  height: 1rem;
+  width: 0.1rem;
+}
+.foo {
+  display: inline-block;
+  background: #aaf;
+  height: 10rem;
+  width: 0.44rem;
+}
+.pad {
+  background: none;
+}
+.bar {
+  background: #bbf;
+}
+.bar2 {
+  background: #9cf;
+}
+.f1 {
+  font-weight: 100;
+}
+.f2 {
+  font-weight: 200;
+}
+.f3 {
+  font-weight: 300;
+}
+.f4 {
+  font-weight: 400;
+}
+.f5 {
+  font-weight: 500;
+}
+.f6 {
+  font-weight: 600;
+}
+.f7 {
+  font-weight: 700;
+}
+.f8 {
+  font-weight: 800;
+}
+.f9 {
+  font-weight: 900;
+}
