@@ -1,3 +1,7 @@
+body {
+	background-image: url('background.png');
+}
+
 p {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
@@ -6,6 +10,28 @@ span {
   height: 1rem;
   width: 0.1rem;
 }
+div.toolbar {
+	margin: 10pt;
+}
+.menu {
+	background: #dde;
+	border: solid 1pt #cce;
+	padding: 4pt;
+	color: #44e;
+}
+.option_active {
+	background: #e00;
+	border: solid 1pt #800;
+	padding: 4pt;
+	color: #fff;
+}
+.option {
+	background: #edd;
+	border: solid 1pt #ecc;
+	padding: 4pt;
+	color: #e44;
+}
+
 .typo {
   color: red;
 }
