@@ -6,6 +6,9 @@ span {
   height: 1rem;
   width: 0.1rem;
 }
+.typo {
+  color: red;
+}
 .foo {
   display: inline-block;
   background: #aaf;
