@@ -8,28 +8,41 @@ function adjust(dif)
 	return Math.pow(dif / 4, 0.5);
 }
 
-function letter(weight, charcode, index)
+function add_box()
 {
-	return $('<span>')
-		.attr('id','letter'+index)
+	box = $('<span>').addClass('box');
+	$('#output').append(box);
+	state.boxes.push(box);
+	return box;
+}
+
+function add_letter(index, weight, charcode)
+{
+	element = $('<span>')
 	    	.addClass(weight_class(weight))
 		.text(String.fromCharCode(charcode));
+	if ( index >= state.boxes.length )
+	{
+		add_box();
+	}
+	state.boxes[index].append(element);
 }
 
 function get_letter(index)
 {
-	return $('#letter'+index);
+	return $(':last-child',state.boxes[index]);
 }
 
 var state = {
 	last: 0,
-	letter_count: 0
+	boxes: [],
+	index: 0
 };
 
 var thing = function() {
 $('input').on('keypress', function(event){
 	var key = event.key;
-	var which = event.which;
+	var charcode = event.which;
 	var timeStamp = event.timeStamp;
 	var dif = timeStamp - state.last;
 	state.last = timeStamp;
@@ -37,23 +50,15 @@ $('input').on('keypress', function(event){
 	var weight = 11 - Math.max(0,Math.min(10, avgDown));
 	if (key == 'Backspace')
 	{
-		state.letter_count--;
-		get_letter(state.letter_count)
+		state.index--;
+		get_letter(state.index)
 			.addClass('typo')
-			.attr('id','dead');
 	}
 	else
 	{
-		$('#output').append(letter(weight, which, state.letter_count));
-		state.letter_count++;
+		add_letter( state.index, weight, charcode );
+		state.index++;
 	}
-
-	$('#outgraph')
-		.append($('<div class=foo>')
-		.append($('<div class=pad>')
-		.height((10 - weight) + "rem"))
-		.append($('<div class=bar>')
-		.height(weight + "rem")));
 });
 };
 

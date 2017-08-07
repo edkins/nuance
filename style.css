@@ -4,12 +4,18 @@ body {
 
 p {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 45pt;
 	opacity: 0.5;
 }
-span {
-  height: 1rem;
-  width: 0.1rem;
+span.box {
+	display: inline-block;
+}
+span.box span {
+	display: block;
+	height: 0;
+}
+span.box span.typo {
+	color: red;
 }
 div.toolbar {
 	margin: 10pt;
@@ -33,50 +39,45 @@ div.toolbar {
 	color: #e44;
 }
 
-.typo {
-	color: red;
-	position: absolute;
-	z-index: -1;
-}
 .foo {
-  display: inline-block;
-  background: #aaf;
-  height: 10rem;
-  width: 0.44rem;
+	display: inline-block;
+	background: #aaf;
+	height: 10rem;
+	width: 0.44rem;
 }
 .pad {
-  background: none;
+	background: none;
 }
 .bar {
-  background: #bbf;
+	background: #bbf;
 }
 .bar2 {
-  background: #9cf;
+	background: #9cf;
 }
 .f1 {
-  font-weight: 100;
+	font-weight: 100;
 }
 .f2 {
-  font-weight: 200;
+	font-weight: 200;
 }
 .f3 {
-  font-weight: 300;
+	font-weight: 300;
 }
 .f4 {
-  font-weight: 400;
+	font-weight: 400;
 }
 .f5 {
-  font-weight: 500;
+	font-weight: 500;
 }
 .f6 {
-  font-weight: 600;
+	font-weight: 600;
 }
 .f7 {
-  font-weight: 700;
+	font-weight: 700;
 }
 .f8 {
-  font-weight: 800;
+	font-weight: 800;
 }
 .f9 {
-  font-weight: 900;
+	font-weight: 900;
 }
