@@ -36,7 +36,8 @@ function get_letter(index)
 var state = {
 	last: 0,
 	boxes: [],
-	index: 0
+	index: 0,
+	last_by_code: {}
 };
 
 var thing = function() {
@@ -59,6 +60,19 @@ $('input').on('keypress', function(event){
 		add_letter( state.index, weight, charcode );
 		state.index++;
 	}
+});
+
+$('input').on('keydown', function(event) {
+	var charcode = event.which;
+	var timeStamp = event.timeStamp;
+	state.last_by_code[charcode] = timeStamp;
+});
+
+$('input').on('keyup', function(event) {
+	var timeStamp = event.timeStamp;
+	var charcode = event.which;
+	var dif = timeStamp - state.last_by_code[charcode];
+	console.log('time spent pressed: ' + dif);
 });
 };
 
