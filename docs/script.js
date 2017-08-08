@@ -16,11 +16,21 @@ function add_box()
 	return box;
 }
 
+function from_char_code(charcode)
+{
+	var result = String.fromCharCode(charcode);
+	if (result == ' ')
+	{
+		result = '\xa0';  // nonbreaking space
+	}
+	return result;
+}
+
 function add_letter(index, weight, charcode)
 {
 	element = $('<span>')
 	    	.addClass(weight_class(weight))
-		.text(String.fromCharCode(charcode));
+		.text(from_char_code(charcode));
 	if ( index >= state.boxes.length )
 	{
 		add_box();
@@ -48,7 +58,7 @@ $('input').on('keypress', function(event){
 	var dif = timeStamp - state.last;
 	state.last = timeStamp;
 	var avgDown = adjust(dif);
-	var weight = 11 - Math.max(0,Math.min(10, avgDown));
+	var weight = Math.max(0,Math.min(10, avgDown));
 	if (key == 'Backspace')
 	{
 		state.index--;
