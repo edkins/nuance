@@ -43,11 +43,44 @@ function get_letter(index)
 	return $(':last-child',state.boxes[index]);
 }
 
+function component(x)
+{
+	if (x < 0)
+	{
+		return '0';
+	}
+	else if (x > 255)
+	{
+		return '255';
+	}
+	else
+	{
+		return '' + Math.floor(x);
+	}
+}
+
+function rgb(r,g,b)
+{
+	return 'rgb(' + component(r) + ',' + component(g) + ',' + component(b) + ')';
+}
+
+function press_time_colour(dif)
+{
+	var x = 2 * dif - 128;
+	return rgb(255-x, x, 0);
+}
+
+function modify_colour(index, dif)
+{
+	get_letter(index).css('color',press_time_colour(dif));
+}
+
 var state = {
 	last: 0,
 	boxes: [],
 	index: 0,
-	last_by_code: {}
+	last_by_code: {},
+	last_index_by_key: {}
 };
 
 var thing = function() {
@@ -68,6 +101,7 @@ $('input').on('keypress', function(event){
 	else
 	{
 		add_letter( state.index, weight, charcode );
+		state.last_index_by_key[key] = state.index;
 		state.index++;
 	}
 });
@@ -80,9 +114,13 @@ $('input').on('keydown', function(event) {
 
 $('input').on('keyup', function(event) {
 	var timeStamp = event.timeStamp;
+	var key = event.key;
 	var charcode = event.which;
 	var dif = timeStamp - state.last_by_code[charcode];
-	console.log('time spent pressed: ' + dif);
+	if ( key in state.last_index_by_key )
+	{
+		modify_colour( state.last_index_by_key[key], dif );
+	}
 });
 };
 
